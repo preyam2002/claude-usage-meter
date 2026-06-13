@@ -4,13 +4,19 @@ Claude Usage Meter is a Claude Code statusline that shows current rate-limit usa
 
 ## Install
 
-The simplest install path is npm:
+Use the GitHub source now:
+
+```bash
+npx -y github:preyam2002/claude-usage-meter install
+```
+
+After the npm package is published, the shorter command will be:
 
 ```bash
 npx claude-usage-meter@latest install
 ```
 
-This copies a stable runtime into `~/.claude/usage-meter/` and updates `~/.claude/settings.json` with a `statusLine` command.
+Both commands copy a stable runtime into `~/.claude/usage-meter/` and update `~/.claude/settings.json` with a `statusLine` command.
 
 ## Claude Plugin
 
@@ -22,7 +28,7 @@ This repository also ships a Claude Code marketplace for discovery:
 /claude-usage-meter:install-statusline
 ```
 
-The plugin install skill delegates to the same npm installer.
+The plugin install skill delegates to the same installer.
 
 ## Codex Plugin
 

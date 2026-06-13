@@ -10,7 +10,7 @@ Use this skill when the user wants to enable the Claude Usage Meter statusline.
 Run this command from Claude Code:
 
 ```bash
-npx -y claude-usage-meter@latest install
+npx -y github:preyam2002/claude-usage-meter install
 ```
 
 Then tell the user:

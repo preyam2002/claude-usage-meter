@@ -12,7 +12,7 @@ Use this skill when the user wants Codex to install, update, or inspect the Clau
 Run:
 
 ```bash
-npx -y claude-usage-meter@latest install
+npx -y github:preyam2002/claude-usage-meter install
 ```
 
 Report the printed `settings`, `script`, and `command` paths.
@@ -24,7 +24,7 @@ The installer copies a stable runtime to `~/.claude/usage-meter/` and updates `~
 After installing, run a smoke test with mock Claude Code statusline input:
 
 ```bash
-printf '%s\n' '{"model":{"display_name":"Sonnet"},"context_window":{"used_percentage":12},"rate_limits":{"five_hour":{"used_percentage":25,"resets_at":1893459600}}}' | node "$HOME/.claude/usage-meter/claude-usage-meter.mjs"
+printf '%s\n' '{"model":{"display_name":"Sonnet"},"context_window":{"used_percentage":12},"rate_limits":{"five_hour":{"used_percentage":25,"resets_at":1893459600}}}' | node "$HOME/.claude/usage-meter/bin/claude-usage-meter"
 ```
 
 The output should include `Sonnet`, `ctx 12%`, and `5h 25%`.

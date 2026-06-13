@@ -6,7 +6,13 @@ The simplest public distribution path is npm first, marketplaces second:
 npx claude-usage-meter@latest install
 ```
 
-That command is the primary user experience because Claude Code plugins cannot currently auto-configure the main `statusLine` setting. The Claude and Codex plugins in this repository exist for discovery, setup help, and workspace sharing.
+Until npm is live, users can install directly from GitHub:
+
+```bash
+npx -y github:preyam2002/claude-usage-meter install
+```
+
+The npm command is the target primary user experience because Claude Code plugins cannot currently auto-configure the main `statusLine` setting. The Claude and Codex plugins in this repository exist for discovery, setup help, and workspace sharing.
 
 ## Channels
 
@@ -15,16 +21,21 @@ That command is the primary user experience because Claude Code plugins cannot c
    - One command install.
    - Works outside Claude/Codex plugin UX.
 
-2. GitHub repository marketplace
+2. GitHub source install
+   - Works immediately after the public repo exists.
+   - Command: `npx -y github:preyam2002/claude-usage-meter install`.
+   - Slightly less elegant than npm, but public today.
+
+3. GitHub repository marketplace
    - Claude: `/plugin marketplace add preyam2002/claude-usage-meter`
    - Codex: `codex plugin marketplace add preyam2002/claude-usage-meter`
    - Good for users who browse plugins from the CLI/app.
 
-3. Codex app sharing
+4. Codex app sharing
    - Good for workspace members.
    - Does not publish publicly.
 
-4. Claude community marketplace
+5. Claude community marketplace
    - Best long-term public discovery path after review.
    - Submit after the npm package and GitHub repo are live.
 
@@ -42,6 +53,12 @@ That command is the primary user experience because Claude Code plugins cannot c
 
 ```bash
 npx claude-usage-meter@latest install
+```
+
+Until npm is live, verify from GitHub:
+
+```bash
+npx -y github:preyam2002/claude-usage-meter install
 ```
 
 ## Source Notes
