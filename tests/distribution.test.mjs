@@ -17,6 +17,7 @@ test("package is publishable as the public npm distribution channel", async () =
   assert.equal(packageJson.repository.url, "git+https://github.com/preyam2002/claude-usage-meter.git");
   assert.equal(packageJson.publishConfig.access, "public");
   assert.equal(packageJson.publishConfig.provenance, true);
+  assert.doesNotMatch(packageJson.scripts["validate:codex"], /\/Users\//);
   assert.deepEqual(packageJson.files.sort(), [
     ".agents/",
     ".claude-plugin/",

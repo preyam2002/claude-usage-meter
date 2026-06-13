@@ -36,8 +36,8 @@
   "scripts": {
     "test": "node --test",
     "pack:dry-run": "npm_config_cache=.npm-cache npm pack --dry-run",
-    "validate:claude": "claude plugin validate . && claude plugin validate plugins/claude-usage-meter",
-    "validate:codex": "python3 /Users/preyam/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py plugins/codex-claude-usage-meter",
+    "validate:claude": "if command -v claude >/dev/null 2>&1; then claude plugin validate . && claude plugin validate plugins/claude-usage-meter; else echo \"Skipping Claude plugin validation: claude CLI not found\"; fi",
+    "validate:codex": "node --test tests/plugin-packaging.test.mjs",
     "validate": "npm test && npm run validate:claude && npm run validate:codex && npm run pack:dry-run"
   },
   "bin": {
