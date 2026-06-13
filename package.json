@@ -1,0 +1,49 @@
+{
+  "name": "claude-usage-meter",
+  "version": "0.1.0",
+  "description": "Claude Code statusline usage meter with rate-limit forecasts.",
+  "type": "module",
+  "license": "MIT",
+  "author": "preyam2002",
+  "homepage": "https://github.com/preyam2002/claude-usage-meter#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/preyam2002/claude-usage-meter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/preyam2002/claude-usage-meter/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "statusline",
+    "usage",
+    "rate-limits"
+  ],
+  "files": [
+    "bin/",
+    "src/",
+    "plugins/",
+    ".claude-plugin/",
+    ".agents/",
+    "README.md",
+    "PUBLISHING.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "test": "node --test",
+    "pack:dry-run": "npm_config_cache=.npm-cache npm pack --dry-run",
+    "validate:claude": "claude plugin validate . && claude plugin validate plugins/claude-usage-meter",
+    "validate:codex": "python3 /Users/preyam/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py plugins/codex-claude-usage-meter",
+    "validate": "npm test && npm run validate:claude && npm run validate:codex && npm run pack:dry-run"
+  },
+  "bin": {
+    "claude-usage-meter": "./bin/claude-usage-meter.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

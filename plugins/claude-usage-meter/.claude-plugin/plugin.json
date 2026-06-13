@@ -1,0 +1,17 @@
+{
+  "name": "claude-usage-meter",
+  "displayName": "Claude Usage Meter",
+  "version": "0.1.0",
+  "description": "Claude Code statusline usage meter with rate-limit reset and projected exhaustion times.",
+  "author": {
+    "name": "preyam2002"
+  },
+  "license": "MIT",
+  "keywords": [
+    "statusline",
+    "usage",
+    "rate-limits",
+    "claude-code"
+  ],
+  "skills": "./skills/"
+}

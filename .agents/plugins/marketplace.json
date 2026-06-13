@@ -1,0 +1,20 @@
+{
+  "name": "claude-usage-meter-codex",
+  "interface": {
+    "displayName": "Claude Usage Meter"
+  },
+  "plugins": [
+    {
+      "name": "codex-claude-usage-meter",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex-claude-usage-meter"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

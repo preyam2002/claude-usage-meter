@@ -1,0 +1,26 @@
+{
+  "name": "codex-claude-usage-meter",
+  "version": "0.1.0",
+  "description": "Codex workflow for installing and maintaining the Claude Usage Meter statusline.",
+  "author": {
+    "name": "preyam2002"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Claude Usage Meter",
+    "shortDescription": "Install a Claude Code usage forecast statusline.",
+    "longDescription": "Claude Usage Meter helps Codex install and maintain a Claude Code statusline that shows 5-hour and 7-day usage percentages, reset times, and projected cap times based on recent local samples.",
+    "developerName": "preyam2002",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Install Claude Usage Meter for Claude Code",
+      "Check my Claude Usage Meter plugin setup",
+      "Update the Claude usage statusline"
+    ],
+    "brandColor": "#2563EB"
+  }
+}
