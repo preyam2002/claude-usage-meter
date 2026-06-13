@@ -41,7 +41,7 @@
     "validate": "npm test && npm run validate:claude && npm run validate:codex && npm run pack:dry-run"
   },
   "bin": {
-    "claude-usage-meter": "./bin/claude-usage-meter.mjs"
+    "claude-usage-meter": "bin/claude-usage-meter"
   },
   "engines": {
     "node": ">=18"

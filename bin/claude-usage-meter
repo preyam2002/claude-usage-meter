@@ -1,10 +1,8 @@
 #!/usr/bin/env node
-import { fileURLToPath } from "node:url";
 
-import { installClaudeStatusLine } from "../src/install-statusline.mjs";
-import { buildStatusLine, defaultStatePath, readStatusLineInput } from "../src/usage-meter.mjs";
-
-const thisFile = fileURLToPath(import.meta.url);
+const thisFile = process.argv[1];
+const { installClaudeStatusLine } = await import("../src/install-statusline.mjs");
+const { buildStatusLine, defaultStatePath, readStatusLineInput } = await import("../src/usage-meter.mjs");
 
 try {
   if (process.argv.includes("--help") || process.argv.includes("-h")) {
@@ -32,7 +30,7 @@ try {
     console.error(error);
   }
   console.log("Claude | usage meter unavailable");
-  process.exitCode = process.argv.includes("--install") ? 1 : 0;
+  process.exitCode = shouldInstall() ? 1 : 0;
 }
 
 function readRefreshInterval() {

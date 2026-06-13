@@ -11,7 +11,7 @@ test("installs a stable statusline script and preserves existing Claude settings
   const dir = await mkdtemp(join(tmpdir(), "usage-meter-install-"));
   const claudeDir = join(dir, ".claude");
   const sourceRoot = join(dir, "source");
-  const sourceScript = join(sourceRoot, "bin", "claude-usage-meter.mjs");
+  const sourceScript = join(sourceRoot, "bin", "claude-usage-meter");
 
   try {
     await mkdir(claudeDir, { recursive: true });
@@ -46,7 +46,7 @@ test("installs a stable statusline script and preserves existing Claude settings
     );
     assert.deepEqual(settings.permissions, { allow: ["Bash(npm test)"] });
     assert.equal(settings.statusLine.type, "command");
-    assert.match(settings.statusLine.command, /claude-usage-meter\.mjs/);
+    assert.match(settings.statusLine.command, /claude-usage-meter/);
     assert.equal(settings.statusLine.refreshInterval, 45);
     assert.equal(settings.statusLine.padding, 1);
   } finally {
@@ -57,7 +57,7 @@ test("installs a stable statusline script and preserves existing Claude settings
 test("installed statusline script executes from the stable Claude directory", async () => {
   const dir = await mkdtemp(join(tmpdir(), "usage-meter-exec-"));
   const claudeDir = join(dir, ".claude");
-  const sourceScript = join(new URL("..", import.meta.url).pathname, "bin", "claude-usage-meter.mjs");
+  const sourceScript = join(new URL("..", import.meta.url).pathname, "bin", "claude-usage-meter");
 
   try {
     const result = await installClaudeStatusLine({

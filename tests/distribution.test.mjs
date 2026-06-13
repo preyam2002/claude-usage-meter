@@ -35,7 +35,7 @@ test("npx-style install subcommand installs the Claude statusline", async () => 
   try {
     const output = await runCli(["install", "--claude-dir", claudeDir, "--refresh-interval", "30"]);
     const settings = JSON.parse(await readFile(join(claudeDir, "settings.json"), "utf8"));
-    const smoke = await runInstalled(join(claudeDir, "usage-meter", "bin", "claude-usage-meter.mjs"), {
+    const smoke = await runInstalled(join(claudeDir, "usage-meter", "bin", "claude-usage-meter"), {
       CLAUDE_USAGE_METER_STATE: join(claudeDir, "usage-meter", "samples.json"),
     });
 
@@ -59,7 +59,7 @@ test("GitHub workflows validate and publish with trusted npm publishing", async 
 
 function runCli(args) {
   return new Promise((resolve, reject) => {
-    const child = spawn(process.execPath, [join(root, "bin", "claude-usage-meter.mjs"), ...args], {
+    const child = spawn(process.execPath, [join(root, "bin", "claude-usage-meter"), ...args], {
       stdio: ["ignore", "pipe", "pipe"],
     });
     let stdout = "";
