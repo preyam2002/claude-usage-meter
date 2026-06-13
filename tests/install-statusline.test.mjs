@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdir, mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { spawn } from "node:child_process";
@@ -82,6 +82,41 @@ test("installed statusline script executes from the stable Claude directory", as
     assert.match(output, /Sonnet/);
     assert.match(output, /ctx 12%/);
     assert.match(output, /5h 25%/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test("installer resolves npm .bin symlinks before copying source modules", async () => {
+  const dir = await mkdtemp(join(tmpdir(), "usage-meter-symlink-"));
+  const packageRoot = join(dir, "node_modules", "claude-usage-meter");
+  const binDir = join(dir, "node_modules", ".bin");
+  const claudeDir = join(dir, ".claude");
+
+  try {
+    await mkdir(join(packageRoot, "bin"), { recursive: true });
+    await mkdir(join(packageRoot, "src"), { recursive: true });
+    await mkdir(binDir, { recursive: true });
+    await writeFile(
+      join(packageRoot, "bin", "claude-usage-meter"),
+      "#!/usr/bin/env node\nimport '../src/usage-meter.mjs';\nconsole.log('ok');\n",
+    );
+    await writeFile(join(packageRoot, "src", "usage-meter.mjs"), "export default true;\n");
+    await symlink(
+      join(packageRoot, "bin", "claude-usage-meter"),
+      join(binDir, "claude-usage-meter"),
+    );
+
+    await installClaudeStatusLine({
+      claudeDir,
+      sourceScript: join(binDir, "claude-usage-meter"),
+      refreshInterval: 45,
+    });
+
+    assert.equal(
+      await readFile(join(claudeDir, "usage-meter", "src", "usage-meter.mjs"), "utf8"),
+      "export default true;\n",
+    );
   } finally {
     await rm(dir, { recursive: true, force: true });
   }
