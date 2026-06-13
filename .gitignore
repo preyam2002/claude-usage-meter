@@ -1,5 +1,6 @@
 node_modules/
 .npm-cache/
+.gh-cache/
 .DS_Store
 *.log
 samples.json
